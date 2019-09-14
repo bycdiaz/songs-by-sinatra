@@ -1,7 +1,7 @@
 doctype html
 html lang="en"
   head
-    title== @title || "Songs By Sinatra"
+    title== @title
     meta charset="utf-8"
     == css :styles
   body
@@ -9,4 +9,5 @@ html lang="en"
       h1 Songs By Sinatra
       == slim :nav
     section
+      == styled_flash
       == yield

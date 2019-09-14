@@ -2,6 +2,12 @@ require 'sass'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require './song'
+require 'sinatra/flash'
+require 'pony'
+
+before do
+  set_title
+end
 
 configure :development do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
@@ -26,6 +32,10 @@ helpers do
 
   def current?(path='/')
     (request.path==path || request.path==path+'/') ? "current" : nil
+  end
+
+  def set_title
+    @title ||= "Songs By Sinatra"
   end
 end
 
